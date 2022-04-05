@@ -1,0 +1,59 @@
+/*3.	Define a new exception, called LineTooLongException, which prints out the error message "The strings is too long". 
+Write a program that reads all lines of a file and throws an exception of type LineTooLongException in the case where a string of the file is longer 
+than 80 characters. 
+Handle also all exceptions that could be thrown by the program.
+
+*/
+
+
+package com.exception.demo;
+
+import java.util.Scanner;
+
+public class LineTooLong {
+          public static void main(String[] arg) throws LineTooLongException {
+        	  Scanner sc=new Scanner(System.in);
+        	  String str;
+        	  while(true) {
+        		  try {
+        			  System.out.println("Enetr a line "+"Done to exit ");
+        			  str =sc.nextLine();
+        			  if("done".equals(str)) {
+        				  break;
+        			  }
+        			  if(str.length()>80) {
+        				  throw new LineTooLongException();
+        			  }
+        			 System.out.println("Enter a line"+"Done to exit");
+        			 str=sc.nextLine();
+        		  }
+        		  catch(LineTooLongException st) {
+        			  System.out.println("line has too many "+"character :"+st);
+        	  }
+        	  }
+        	  
+          }
+}
+       
+class LineTooLongException extends Exception{
+	public LineTooLongException() {
+		System.out.println("\n Line has out Range is more than 80 character");
+	}
+}
+
+
+
+
+
+
+/*
+Output :
+Enetr a line Done to exit 
+swthdjygjyxjmfmjgukgdfytftdfzdfhgiluhbhyfkuhp;ihjohgfykfdrudtgflyuhkjoi;jihughffsjluiihuhyg.
+juftdtdhdrtfyghjhuhuihgfrdttyiyuiohuygytffuyguihiukjuhgydftyfyjghiikjoiiuhukyyjfytdjfi
+
+ Line has out Range is more than 80 character
+line has too many character :com.exception.demo.LineTooLongException
+Enetr a line Done to exit 
+
+*/
