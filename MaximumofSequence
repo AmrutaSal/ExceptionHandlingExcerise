@@ -1,0 +1,85 @@
+/*1.	Write a Java program that prints the maximum of the sequence of non-negative integer values that are stored on the file data.txt
+
+If the number is a non numeric, then throw the NumberFormatException.
+If file is not there, throw the FileNotFoundException.
+If any problem in reading the file, throw the IOException.
+For other exceptions throw the Exception
+
+*/
+
+
+package com.exception.demo;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class MaximumofSequence {
+	public static void main(String [] arg) {
+		
+		BufferedReader br=null;
+		try {
+       /*	File file = new File("data.txt");
+		FileReader re = new FileReader(file);
+		*/
+			
+	     br =new BufferedReader(new FileReader("D://data.txt"));
+		int max = -1;
+		String line= br.readLine();       //IOException 
+		
+		while(line !=null) {
+			int num=Integer.parseInt(line);     //NumberFormate
+			if(num > max )
+				max=num;
+			line =br.readLine();
+		}
+		if(max == -1) {
+			throw new Exception("File is Empty");
+		}
+		else {
+		System.out.println("Maximun= "+max);
+		}
+	}
+		catch(FileNotFoundException e) {
+			System.out.println("File is not found");
+		}
+		catch(IOException e) {
+			System.out.println("File doesn't read");
+		}
+		catch(NumberFormatException e) {
+			System.out.println("file contain non numeric data");
+		}
+		catch(Exception e) {
+			System.out.println(e.getMessage());
+			
+		}
+		finally {
+			if(br!=null)
+			{
+				try {
+					br.close();
+				}
+				catch(IOException ex)
+				{
+					System.out.println(ex.getMessage());
+				}
+			
+			}
+		}
+	
+
+}
+}
+
+
+
+
+
+
+/*
+Output :
+file contain non numeric data
+
+*/
