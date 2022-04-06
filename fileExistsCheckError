@@ -1,0 +1,41 @@
+package com.exception.demo;
+
+import java.io.File;
+
+public class fileExistsCheckError {
+	public static void main(String[] args) {      
+	      File f = null;
+	      boolean bool = false;
+	      
+	      try {
+	         // create new files
+	        f = new File("D://input.txt");
+	        
+	        bool=f.exists() ;
+	        
+	        if (f.exists()==true) 
+				System.out.println(" File is Exists : " + bool); 
+	        else
+	        	System.out.println(" File doesn't Exists : " + bool); 
+
+
+	         
+	      } catch(Exception e) {
+	         // if any error occurs
+	    	  System.out.println(e.getMessage());
+	      }
+	      
+	   }
+	   
+	
+ 
+}
+
+
+
+
+/*
+Output :
+ File is Exists : true
+
+*/
