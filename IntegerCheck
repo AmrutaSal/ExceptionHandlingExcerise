@@ -1,0 +1,52 @@
+package com.exception.demo;
+
+public class IntegerCheck {
+	public static void main(String[] arg) {
+		String[] input = {"abc","6","365","5sf","-89","6.1"};
+		//test the if each is a integer or not
+		//loop of array string
+		
+		for(int i=0 ; i<input.length ; i++)
+		{
+			//test next string is a integer
+			boolean isInt = isInt(input[i]);
+			if(isInt) {
+				System.out.println(input[i]+ " is an integer : "+ isInt);
+			}
+			else {
+				System.out.println(input[i]+ " is not an integer : " + isInt);
+			}
+		}
+		
+	}
+	
+   public static boolean isInt(String s) {
+		// TODO Auto-generated method stub
+	   boolean isValidInteger =false;
+	   try {
+		   Integer.parseInt(s);
+		   
+		   //s is a valid integer
+		   isValidInteger = true;
+	   }
+	   catch(NumberFormatException ex)
+	   {
+		  // System.out.println(ex.getMessage());
+	   }
+		return isValidInteger;
+	}
+
+}
+
+
+
+/*
+Output :
+abc is not an integer : false
+6 is an integer : true
+365 is an integer : true
+5sf is not an integer : false
+-89 is an integer : true
+6.1 is not an integer : false
+
+*/
