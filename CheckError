@@ -1,0 +1,95 @@
+package com.exception.demo;
+
+import java.io.File;
+
+public class CheckError {
+	public static void main(String[] args) {      
+	      File f = null;
+	      boolean bool = false;
+	  	String[] input = {"abc","6","365","5sf","-89","6.1"};
+		//test the if each is a integer or not
+		//loop of array string
+	  	
+		
+		for(int i=0 ; i<input.length ; i++)
+		{
+			//test next string is a integer
+			boolean isInt = isInt(input[i]);
+			if(isInt) {
+				System.out.println(input[i]+ " is an integer : "+ isInt);
+			}
+			else {
+				System.out.println(input[i]+ " is not an integer : " + isInt);
+			}
+		}
+		
+		try {
+	         // create new files
+	        f = new File("D://input.txt");
+	        
+	        bool=f.exists() ;
+	        
+	        if (f.exists()==true) 
+				System.out.println("\n File is Exists : " + bool); 
+	        else
+	        	System.out.println(" \n File doesn't Exists : " + bool); 
+
+
+	         
+	      } catch(Exception e) {
+	         // if any error occurs
+	    	  System.out.println(e.getMessage());
+	      }
+	      
+
+	      
+		for(int i=0 ; i<input.length ; i++)
+		{
+			//test next string is a integer
+			boolean isDouble = isDouble(input[i]);
+			if(isDouble) {
+				System.out.println(input[i]+ " is an double : "+ isDouble);
+			}
+			else {
+				System.out.println(input[i]+ " is not an double : " + isDouble);
+			}
+		}
+		
+	
+	   }
+	
+	
+	public static boolean isInt(String s) {
+		// TODO Auto-generated method stub
+	   boolean isValidInteger =false;
+	   try {
+		   Integer.parseInt(s);
+		   
+		   //s is a valid integer
+		   isValidInteger = true;
+	   }
+	   catch(NumberFormatException ex)
+	   {
+		  // System.out.println(ex.getMessage());
+	   }
+		return isValidInteger;
+	}   
+
+
+	   public static boolean isDouble(String s) {
+			// TODO Auto-generated method stub
+		   boolean isValidDouble =false;
+		   try {
+			   Double.parseDouble(s);
+			   
+			   //s is a valid integer
+			   isValidDouble = true;
+		   }
+		   catch(NumberFormatException ex)
+		   {
+			  // System.out.println(ex.getMessage());
+		   }
+			return isValidDouble;
+}
+}
+
