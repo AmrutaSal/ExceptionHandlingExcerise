@@ -1,11 +1,15 @@
 package com.exception.demo;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 public class CheckError {
 	public static void main(String[] args) {      
 	      File f = null;
 	      boolean bool = false;
+	      
 	  	String[] input = {"abc","6","365","5sf","-89","6.1"};
 		//test the if each is a integer or not
 		//loop of array string
@@ -27,16 +31,28 @@ public class CheckError {
 	         // create new files
 	        f = new File("D://input.txt");
 	        
-	        bool=f.exists() ;
+	        bool=f.exists();
+	         
+	        FileInputStream fis = new FileInputStream(f);
 	        
 	        if (f.exists()==true) 
 				System.out.println("\n File is Exists : " + bool); 
 	        else
 	        	System.out.println(" \n File doesn't Exists : " + bool); 
 
-
+    		}
+		    
+		   catch(FileNotFoundException e) {
+	  
+                          e.printStackTrace();
+                  
+		   }
+		  catch(IOException e) {
+			   
+			   e.printStackTrace();
+		   }
 	         
-	      } catch(Exception e) {
+	         catch(Exception e) {
 	         // if any error occurs
 	    	  System.out.println(e.getMessage());
 	      }
@@ -90,6 +106,6 @@ public class CheckError {
 			  // System.out.println(ex.getMessage());
 		   }
 			return isValidDouble;
-}
+   }
 }
 
